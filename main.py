@@ -26,13 +26,25 @@ def draw():
         fill(0)
         text(day, ((width / 7) * i + ((width / 7) / 2), y_space_header / 4))
 
-    for i in range(7):
-        for j in range(5):
-            x = i * (width / 7)
-            y = j * (grid_height / 5) + y_space_header
+    day_cells = []
+    day_number = 1
+    for i in range(5):
+        for j in range(7):
+            x = j * (width / 7)
+            y = i * (grid_height / 5) + y_space_header
             stroke(0)
             fill(255)
             rect(x, y, (width / 7), (grid_height / 5))
+            day_cells.append(Day(x, y, day_number))
+            day_number += 1
+
+    for day in day_cells:
+        print(day.date_number, day.x)
+        fill(0)
+        text(str(day.date_number), (day.x + 15, day.y + 10))
+        text_align("LEFT")
+        fill(200,200,0)
+        text(day.veg_type, (day.x + 60, day.y + 120))
 
 
 if __name__ == "__main__":
