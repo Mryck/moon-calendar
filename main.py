@@ -1,4 +1,5 @@
 from p5 import *
+from day import Day
 
 
 def setup():
@@ -8,32 +9,30 @@ def setup():
 
 def draw():
     background(255)  # Clear the screen with a black background
-    x_space = 0
     y_space_header = 40
-    y_space = 0
     grid_height = height - y_space_header
 
     days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
 
     # Head
-    line((0, y_space_header), (width, y_space_header))
     f = create_font("Arial.ttf", 20)
     text_font(f)
     text_align("CENTER")
     for i, day in enumerate(days):
+        stroke(0)
+        fill(255)
+        x = i * (width / 7)
+        rect(x, 0, (width / 7), 40)
         fill(0)
         text(day, ((width / 7) * i + ((width / 7) / 2), y_space_header / 4))
-    # Columns
-    for _ in range(7):
-        line(((width / 7) + x_space, 0), ((width / 7) + x_space, height))
-        x_space += width / 7
-    # Rows
-    for _ in range(5):
-        line(
-            (0, (grid_height / 5) + (y_space + y_space_header)),
-            (width, (grid_height / 5) + (y_space + y_space_header)),
-        )
-        y_space += grid_height / 5
+
+    for i in range(7):
+        for j in range(5):
+            x = i * (width / 7)
+            y = j * (grid_height / 5) + y_space_header
+            stroke(0)
+            fill(255)
+            rect(x, y, (width / 7), (grid_height / 5))
 
 
 if __name__ == "__main__":
