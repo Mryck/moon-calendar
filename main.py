@@ -39,12 +39,15 @@ def draw():
             day_number += 1
 
     for day in day_cells:
-        print(day.date_number, day.x)
         fill(0)
         text(str(day.date_number), (day.x + 15, day.y + 10))
         text_align("LEFT")
-        fill(200,200,0)
+        fill(200, 200, 0)
         text(day.veg_type, (day.x + 60, day.y + 120))
+        text_align("CENTER")
+        fill(0)
+        text(str(day.moon_phase), (day.x + 80, day.y + 77))
+        text(day.moon_type, (day.x + 110, day.y + 20))
 
 
 if __name__ == "__main__":
